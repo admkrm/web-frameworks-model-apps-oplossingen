@@ -19,16 +19,30 @@ jobs:
       - name: Create labo oplossing archives
         run: |
           set -euo pipefail
-          shopt -s nullglob
-          artifact_root="$(pwd)/../artifacts"
+          artifact_root="$(pwd)/artifacts"
           mkdir -p "${artifact_root}"
+          cd web-frameworks-model-apps-oplossingen
+          shopt -s nullglob
           found=0
-          for dir in labo*-oplossingen; do
-            if [ -d "${dir}" ]; then
+          for bundle in labo*-oplossingen; do
+            [ -d "${bundle}" ] || continue
+            bundle_found=0
+            for solution_dir in "${bundle}"/*/; do
+              [ -d "${solution_dir}" ] || continue
+              bundle_found=1
               found=1
-              zip_path="${artifact_root}/${dir}.zip"
+              solution_name="$(basename "${solution_dir%/}")"
+              zip_path="${artifact_root}/${solution_name}.zip"
               echo "Creating archive ${zip_path}"
-              zip -r "${zip_path}" "${dir}"
+              rm -f "${zip_path}"
+              (cd "${bundle}" && zip -r "${zip_path}" "${solution_name}")
+            done
+            if [ "${bundle_found}" -eq 0 ]; then
+              found=1
+              zip_path="${artifact_root}/$(basename "${bundle}").zip"
+              echo "Creating archive ${zip_path}"
+              rm -f "${zip_path}"
+              zip -r "${zip_path}" "${bundle}"
             fi
           done
           if [ "${found}" -eq 0 ]; then
