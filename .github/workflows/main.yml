@@ -1,1 +1,45 @@
+name: Build Labo Archives
 
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'web-frameworks-model-apps-oplossingen/**'
+      - '.github/workflows/main.yml'
+  workflow_dispatch:
+
+jobs:
+  package-labos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create labo oplossing archives
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          mkdir -p artifacts
+          cd web-frameworks-model-apps-oplossingen
+          found=0
+          for dir in labo*-oplossingen; do
+            if [ -d "${dir}" ]; then
+              found=1
+              zip_path="../artifacts/${dir}.zip"
+              echo "Creating archive ${zip_path}"
+              zip -r "${zip_path}" "${dir}"
+            fi
+          done
+          if [ "${found}" -eq 0 ]; then
+            echo "No labo*-oplossingen directories found to zip." >&2
+            exit 1
+          fi
+
+      - name: Upload labo archives
+        uses: actions/upload-artifact@v4
+        with:
+          name: labo-oplossingen
+          path: artifacts
+          if-no-files-found: error
+          retention-days: 14
