@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Question } from "../../types";
 
 @Component({
   selector: 'app-quiz',
@@ -8,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './quiz.css',
 })
 export class Quiz {
-  vragen = [
+  vragen : Question[] = [
     { id: 1, vraag: 'Wat is 2 + 2?', antwoord: '4' },
     { id: 2, vraag: 'Hoofdstad van België?', antwoord: 'Brussel' },
     { id: 3, vraag: 'Welke kleur krijg je door blauw + geel te mengen?', antwoord: 'Groen' },
