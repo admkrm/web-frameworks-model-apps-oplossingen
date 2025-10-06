@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { User } from "../../types";
 
 @Component({
   selector: 'app-start',
@@ -8,7 +9,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './start.css',
 })
 export class Start {
-  gebruikers = [
+  gebruikers : User[] = [
     { id: 1, naam: 'Alice Janssens', email: 'alice@example.com' },
     { id: 2, naam: 'Bob Peeters', email: 'bob@example.com' },
     { id: 3, naam: 'Charlie Claes', email: 'charlie@example.com' },

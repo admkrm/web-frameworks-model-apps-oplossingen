@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BoekKaart } from '../boek-kaart/boek-kaart';
 import { Filter } from '../filter/filter';
+import { Book } from "../../types";
 
 @Component({
   selector: 'app-boeken-lijst',
@@ -9,7 +10,7 @@ import { Filter } from '../filter/filter';
   styleUrl: './boeken-lijst.css',
 })
 export class BoekenLijst {
-  boeken = [
+  boeken : Book[] = [
     { id: 1, titel: 'De Avonden', auteur: 'Gerard Reve', genre: 'Roman' },
     { id: 2, titel: 'Het Diner', auteur: 'Herman Koch', genre: 'Thriller' },
     { id: 3, titel: 'Oorlog en Vrede', auteur: 'Leo Tolstoj', genre: 'Klassieker' },

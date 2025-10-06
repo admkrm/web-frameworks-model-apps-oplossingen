@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { User } from "../../types";
 
 @Component({
   selector: 'app-gebruiker-detail',
@@ -8,7 +9,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   styleUrl: './gebruiker-detail.css',
 })
 export class GebruikerDetail {
-  gebruikers = [
+  gebruikers : User[] = [
     { id: 1, naam: 'Alice Janssens', email: 'alice@example.com' },
     { id: 2, naam: 'Bob Peeters', email: 'bob@example.com' },
     { id: 3, naam: 'Charlie Claes', email: 'charlie@example.com' },
@@ -21,7 +22,7 @@ export class GebruikerDetail {
     { id: 10, naam: 'Julie Maes', email: 'julie@example.com' },
   ];
 
-  gebruiker: { id: number; naam: string; email: string } | undefined;
+  gebruiker: User | undefined;
 
   constructor(private route: ActivatedRoute) {
     const idParam = this.route.snapshot.paramMap.get('id');
