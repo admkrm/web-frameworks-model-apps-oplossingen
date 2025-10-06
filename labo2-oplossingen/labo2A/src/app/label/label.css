@@ -1,0 +1,8 @@
+.label {
+  display: inline-block;
+  background: #f0f0f0;
+  color: #333;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}

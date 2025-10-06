@@ -1,0 +1,8 @@
+<div>
+  <p>Kind ziet: {{ gebruiker.naam }} (id: {{ gebruiker.id }})</p>
+  <ul>
+    @for (item of log; track $index) {
+    <li>{{ item }}</li>
+    }
+  </ul>
+</div>

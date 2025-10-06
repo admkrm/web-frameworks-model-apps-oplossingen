@@ -1,0 +1,7 @@
+<section>
+  <h3>Event payload demo</h3>
+  <app-payload-demo-child (selecteer)="toonDetails($event)"></app-payload-demo-child>
+  @if (geselecteerd) {
+  <p>Geselecteerd: {{ geselecteerd.naam }} (id: {{ geselecteerd.id }})</p>
+  }
+</section>

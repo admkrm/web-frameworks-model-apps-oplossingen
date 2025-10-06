@@ -1,0 +1,9 @@
+<h2>Zoek lijst</h2>
+
+<input type="text" placeholder="Zoekterm" [(ngModel)]="zoekterm" />
+
+@if ((items | filter:zoekterm:'titel').length === 0) {
+<p>Geen resultaten</p>
+} @for (item of (items | filter:zoekterm:'titel'); track item.id) {
+<p>{{ item.titel }}</p>
+}

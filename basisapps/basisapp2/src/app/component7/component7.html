@@ -1,0 +1,15 @@
+<div class="box">
+  <h3>Component 7 — &#64;switch</h3>
+  <div class="buttons">
+    <button (click)="setRol('admin')">Admin</button>
+    <button (click)="setRol('user')">User</button>
+    <button (click)="setRol('guest')">Guest</button>
+  </div>
+  @switch (rol) { @case ('admin') {
+  <p>Admin panel</p>
+  } @case ('user') {
+  <p>User dashboard</p>
+  } @default {
+  <p>Guest view</p>
+  } }
+</div>

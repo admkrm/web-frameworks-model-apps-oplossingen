@@ -1,0 +1,44 @@
+<h2>Klantformulier</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label>Naam</label>
+    <input type="text" formControlName="naam" />
+    @if (form.controls.naam.invalid && form.controls.naam.touched) {
+    <small>Naam is verplicht (min. 2 letters)</small>
+    }
+  </div>
+
+  <div>
+    <label>E-mail</label>
+    <input type="email" formControlName="email" />
+    @if (form.controls.email.invalid && form.controls.email.touched) {
+    <small>E-mail is ongeldig</small>
+    }
+  </div>
+
+  <div>
+    <label>Geboortedatum</label>
+    <input type="date" formControlName="geboortedatum" />
+    @if (form.controls.geboortedatum.invalid && form.controls.geboortedatum.touched) {
+    <small>Geboortedatum is verplicht</small>
+    }
+  </div>
+
+  <div>
+    <label>Land</label>
+    <select formControlName="land">
+      @for (l of landen; track l) {
+      <option [value]="l">{{ l }}</option>
+      }
+    </select>
+  </div>
+
+  <div style="margin-top: 8px">
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+    <button type="button" (click)="reset()">Reset</button>
+  </div>
+</form>
+
+<h3>Live data</h3>
+<pre>{{ form.value | json }}</pre>

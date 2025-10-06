@@ -1,0 +1,24 @@
+<h2>Kleine Quiz</h2>
+<p>Score: {{ score }} / {{ vragen.length }}</p>
+
+@switch (huidige < vragen.length) { @case (true) {
+<div class="vraag">
+  <p>Vraag {{ huidige + 1 }} van {{ vragen.length }}</p>
+  <h3>{{ vragen[huidige].vraag }}</h3>
+
+  <input placeholder="Jouw antwoord" [(ngModel)]="invoer" />
+  <button (click)="controleerAntwoord()">Controleer</button>
+
+  @if (feedback === 'juist') {
+  <p class="ok">Juist!</p>
+  } @if (feedback === 'fout') {
+  <p class="nok">Helaas, probeer volgende.</p>
+  }
+
+  <button (click)="volgendeVraag()" [disabled]="huidige >= vragen.length">Volgende</button>
+</div>
+} @default {
+<div class="einde">
+  <h3>Einde! Score: {{ score }} / {{ vragen.length }}</h3>
+</div>
+} }

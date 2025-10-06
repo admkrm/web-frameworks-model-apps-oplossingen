@@ -1,0 +1,12 @@
+.box {
+  background: #fce4ec;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+h3 {
+  margin: 0 0 0.5rem;
+}
+ul {
+  margin: 0;
+  padding-left: 1rem;
+}

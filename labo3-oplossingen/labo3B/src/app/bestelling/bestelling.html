@@ -1,0 +1,52 @@
+<h2>Bestelling</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <div>
+    <label>Klant</label>
+    <input type="text" formControlName="klant" />
+    @if (form.controls.klant.invalid && form.controls.klant.touched) {
+    <small>Klant is verplicht</small>
+    }
+  </div>
+
+  <h3>Regels</h3>
+  <div formArrayName="regels">
+    @for (g of regels.controls; let i = $index; track i) {
+    <div
+      [formGroup]="g"
+      style="
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr auto;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 6px;
+      "
+    >
+      <input placeholder="Product" formControlName="product" />
+      <input type="number" min="1" placeholder="Aantal" formControlName="aantal" />
+      <input type="number" min="0" step="0.01" placeholder="Prijs" formControlName="prijs" />
+      <button type="button" (click)="removeRij(i)">Verwijder</button>
+      <div style="grid-column: 1 / -1">
+        @if (g.controls['product'].invalid && g.controls['product'].touched) {
+        <small>Product verplicht</small> } @if (g.controls['aantal'].invalid &&
+        g.controls['aantal'].touched) { <small>Minimaal 1 stuk</small> } @if
+        (g.controls['prijs'].invalid && g.controls['prijs'].touched) { <small>Prijs ≥ 0</small> }
+      </div>
+    </div>
+    }
+  </div>
+
+  <button type="button" (click)="addRij()">Rij toevoegen</button>
+
+  <div style="margin-top: 8px">
+    <strong>Totaal:</strong> € {{ totaal.toFixed(2) }} @if (totaal >= 100) {
+    <span> – Gratis verzending!</span> }
+  </div>
+
+  <div style="margin-top: 8px">
+    <button type="submit" [disabled]="form.invalid || totaal === 0">Verzenden</button>
+  </div>
+</form>
+
+<h3>Live data</h3>
+<pre>{{ form.value | json }}</pre>

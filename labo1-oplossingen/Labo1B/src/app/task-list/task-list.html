@@ -1,0 +1,14 @@
+<div class="box">
+  <div class="row">
+    <input [(ngModel)]="nieuw" placeholder="Nieuwe taak" />
+    <button (click)="toevoegen()">Toevoegen</button>
+  </div>
+  <ul>
+    @for (t of tasks; track t.id) {
+    <li>
+      {{ t.titel }}
+      <button (click)="verwijderen(t.id)">x</button>
+    </li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,12 @@
+.box {
+  background: #f1f8e9;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+h3 {
+  margin: 0 0 0.5rem;
+}
+img {
+  display: block;
+  margin-bottom: 0.5rem;
+}

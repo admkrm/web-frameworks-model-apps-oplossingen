@@ -1,0 +1,24 @@
+<h2>Producten</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Naam</th>
+      <th>Prijs</th>
+      <th>Voorraad</th>
+      <th>Toegevoegd</th>
+      <th>Demo (pipes chain)</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (p of producten; track p.id) {
+    <tr>
+      <td>{{ p.naam | titlecase }}</td>
+      <td>{{ p.prijs | currency : 'EUR' }}</td>
+      <td>{{ p.voorraad | percent : '1.0-1' }}</td>
+      <td>{{ p.toegevoegd | date : 'dd/MM/yyyy' }}</td>
+      <td>{{ p.naam | uppercase | slice : 0 : 12 }}</td>
+    </tr>
+    }
+  </tbody>
+</table>

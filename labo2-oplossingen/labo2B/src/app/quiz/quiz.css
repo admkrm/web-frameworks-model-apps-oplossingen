@@ -1,0 +1,21 @@
+h2 {
+  margin-bottom: 0.5rem;
+}
+.vraag,
+.einde {
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+}
+.vraag h3 {
+  margin: 8px 0;
+}
+input {
+  margin-right: 8px;
+}
+.ok {
+  color: #2e7d32;
+}
+.nok {
+  color: #c62828;
+}

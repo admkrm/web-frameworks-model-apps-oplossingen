@@ -1,0 +1,7 @@
+<h2>Zoeken</h2>
+<input placeholder="zoekterm" [value]="term" (input)="zoek($any($event.target).value)" />
+@if (term) {
+<p>Huidige term: {{ term }}</p>
+} @if (page) {
+<p>Pagina: {{ page }}</p>
+}

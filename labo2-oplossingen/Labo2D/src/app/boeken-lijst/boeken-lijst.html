@@ -1,0 +1,13 @@
+<h2>Boeken</h2>
+
+<app-filter [(term)]="zoekterm"></app-filter>
+
+@if (gefilterdeBoeken.length === 0) {
+<p>Geen resultaten.</p>
+} @else {
+<div class="grid">
+  @for (b of gefilterdeBoeken; track b.id) {
+  <app-boek-kaart [titel]="b.titel" [auteur]="b.auteur" [genre]="b.genre"></app-boek-kaart>
+  }
+</div>
+}

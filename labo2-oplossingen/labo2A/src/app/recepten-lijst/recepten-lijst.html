@@ -1,0 +1,12 @@
+<h2>Recepten</h2>
+
+@if (recepten.length === 0) {
+<p>Geen recepten gevonden.</p>
+} @else {
+<div class="recepten-grid">
+  @for (recept of recepten; track recept.id) {
+  <app-recept-kaart [titel]="recept.titel" [tijd]="recept.tijd" [labels]="recept.labels">
+  </app-recept-kaart>
+  }
+</div>
+}

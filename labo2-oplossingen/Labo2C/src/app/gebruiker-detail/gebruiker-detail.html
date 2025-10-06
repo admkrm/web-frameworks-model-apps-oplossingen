@@ -1,0 +1,7 @@
+@if (gebruiker) {
+<h2>{{ gebruiker.naam }}</h2>
+<p>Email: {{ gebruiker.email }}</p>
+} @else {
+<p>Gebruiker niet gevonden.</p>
+}
+<p><a routerLink="/">Terug naar overzicht</a></p>

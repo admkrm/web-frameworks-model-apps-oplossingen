@@ -1,0 +1,9 @@
+<div class="kaart">
+  <h3>{{ titel }}</h3>
+  <p>Kooktijd: {{ tijd }} min</p>
+  <div class="labels">
+    @for (lbl of labels; track lbl) {
+    <app-label [text]="lbl"></app-label>
+    }
+  </div>
+</div>

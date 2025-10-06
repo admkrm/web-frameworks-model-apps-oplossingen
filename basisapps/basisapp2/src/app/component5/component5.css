@@ -1,0 +1,11 @@
+.box {
+  background: #e0f7fa;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+h3 {
+  margin: 0 0 0.5rem;
+}
+button {
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,27 @@
+<h2>Login (Reactive Forms)</h2>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  style="display: grid; gap: 0.5rem; max-width: 360px"
+>
+  <label for="email">Email</label>
+  <input id="email" type="email" formControlName="email" />
+  @if (form.controls.email.invalid && (form.controls.email.touched || form.controls.email.dirty)) {
+  <div style="color: #b00">Ongeldig emailadres</div>
+  }
+
+  <label for="password">Wachtwoord</label>
+  <input id="password" type="password" formControlName="password" />
+  @if (form.controls.password.hasError('required') && (form.controls.password.touched ||
+  form.controls.password.dirty)) {
+  <div style="color: #b00">Wachtwoord is verplicht</div>
+  } @if (form.controls.password.hasError('minVijf') && (form.controls.password.touched ||
+  form.controls.password.dirty)) {
+  <div style="color: #b00">Minstens 5 tekens</div>
+  }
+
+  <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem">
+    <button type="submit" [disabled]="form.invalid">Login</button>
+    <button type="button" (click)="vulDemo()">Vul demo-email</button>
+  </div>
+</form>

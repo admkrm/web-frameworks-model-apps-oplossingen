@@ -1,0 +1,14 @@
+<h2>FormArray demo</h2>
+<form [formGroup]="form" style="display: grid; gap: 0.5rem; max-width: 360px">
+  <div formArrayName="phones">
+    @for (ctrl of phones.controls; track $index) {
+    <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.25rem">
+      <input [formControlName]="$index" placeholder="telefoonnummer" />
+      <button type="button" (click)="verwijder($index)">Verwijder</button>
+    </div>
+    }
+  </div>
+  <div style="display: flex; gap: 0.5rem">
+    <button type="button" (click)="voegToe()">Voeg nummer toe</button>
+  </div>
+</form>

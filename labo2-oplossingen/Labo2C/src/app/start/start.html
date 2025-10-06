@@ -1,0 +1,13 @@
+<h2>Gebruikers</h2>
+@if (gebruikers.length === 0) {
+<p>Geen gebruikers gevonden.</p>
+} @else {
+<ul>
+  @for (g of gebruikers; track g.id) {
+  <li>
+    <a [routerLink]="['/gebruiker', g.id]">{{ g.naam }}</a>
+    ({{ g.email }})
+  </li>
+  }
+</ul>
+}
