@@ -21,7 +21,6 @@ jobs:
           set -euo pipefail
           shopt -s nullglob
           mkdir -p artifacts
-          cd web-frameworks-model-apps-oplossingen
           found=0
           for dir in labo*-oplossingen; do
             if [ -d "${dir}" ]; then
