@@ -20,12 +20,13 @@ jobs:
         run: |
           set -euo pipefail
           shopt -s nullglob
-          mkdir -p artifacts
+          artifact_root="$(pwd)/../artifacts"
+          mkdir -p "${artifact_root}"
           found=0
           for dir in labo*-oplossingen; do
             if [ -d "${dir}" ]; then
               found=1
-              zip_path="../artifacts/${dir}.zip"
+              zip_path="${artifact_root}/${dir}.zip"
               echo "Creating archive ${zip_path}"
               zip -r "${zip_path}" "${dir}"
             fi
