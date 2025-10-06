@@ -21,7 +21,6 @@ jobs:
           set -euo pipefail
           artifact_root="$(pwd)/artifacts"
           mkdir -p "${artifact_root}"
-          cd web-frameworks-model-apps-oplossingen
           shopt -s nullglob
           found=0
           for bundle in labo*-oplossingen; do
