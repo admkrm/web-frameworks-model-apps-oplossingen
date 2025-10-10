@@ -1,0 +1,20 @@
+<h2>Producten</h2>
+
+@if (loading) {
+<p>Bezig met laden...</p>
+} @if (error) {
+<p class="error">{{ error }}</p>
+}
+
+<ul>
+  @for (p of (producten$ | async) ?? []; track p.id) {
+  <li>
+    <a [routerLink]="['/product', p.id]">
+      <img [src]="p.image" alt="" width="32" height="32" style="vertical-align: middle" />
+      {{ p.title }}
+    </a>
+  </li>
+  } @empty {
+  <li>Geen producten gevonden.</li>
+  }
+</ul>

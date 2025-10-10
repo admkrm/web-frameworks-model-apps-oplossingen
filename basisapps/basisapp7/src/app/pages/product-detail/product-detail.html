@@ -1,0 +1,18 @@
+<a routerLink="/">← Terug</a>
+
+@if (loading) {
+<p>Bezig met laden...</p>
+} @if (error) {
+<p class="error">{{ error }}</p>
+} @if (product$ | async; as product) {
+<article>
+  <h2>{{ product.title }}</h2>
+  <img [src]="product.image" alt="" width="128" height="128" />
+  <p>{{ product.description }}</p>
+  <p>Categorie: {{ product.category }}</p>
+  <p>Prijs: €{{ product.price }}</p>
+  <p>Rating: {{ product.rating.rate }} ({{ product.rating.count }})</p>
+</article>
+} @else {
+<p>Geen product gevonden.</p>
+}
