@@ -1,4 +1,4 @@
-# Labo 2 – Reactive forms en Pipes
+# Labo 3 – Reactive forms en Pipes
 
 In dit labo bouw je vier autonome Angular 20-toepassingen: twee rond Reactive Forms en twee rond Pipes.
 
